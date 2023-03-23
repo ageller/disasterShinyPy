@@ -6,7 +6,8 @@ Earthquake data come from [here](https://www.kaggle.com/datasets/thedevastator/u
 
 A live version of this app is available on [shinyapps.io here](https://ageller.shinyapps.io/disasterpy/).
 
----
+
+## Running locally
 
 If you want to run this app locally, you can clone this repo and follow these steps:
 
