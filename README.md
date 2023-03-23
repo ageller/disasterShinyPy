@@ -6,6 +6,8 @@ Earthquake data come from [here](https://www.kaggle.com/datasets/thedevastator/u
 
 A live version of this app is available on [shinyapps.io here](https://ageller.shinyapps.io/disasterpy/).
 
+---
+
 If you want to run this app locally, you can clone this repo and follow these steps:
 
 1. I recommend creating a conda environment.  I am using Python version 3.9.13 because that is currently one of the (few) available version on shinyapps.io.  Note that for the plotly widget to work with this version of Python, you need to specify the version of ipywidgets. (Otherwise, the app will encounter an error.  See some discussion [here](https://github.com/rstudio/py-shinywidgets/issues/79). Perhaps this will be fixed in a future version of py-shinywidgets):
