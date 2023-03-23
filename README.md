@@ -21,6 +21,7 @@ pip install shinywidgets
 
 2. Run  the app with 
 ```
+cd app
 shiny run --reload app.py
 ```
 
