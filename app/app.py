@@ -40,49 +40,59 @@ working from examples here https://shinylive.io/py/examples/
 '''
 
 app_ui = ui.page_fluid(
+
     # title
     ui.h1("Map of earthquakes and volcanoes"),
-    ui.p("Earthquakes are plotted in blue; the data come from ", ui.a("here", href = "https://www.kaggle.com/datasets/thedevastator/uncovering-geophysical-insights-analyzing-usgs-e"), " and show all earthquakes from 2022.  Volcanoes are plotted in red; the data come from", ui.a("here", href = "https://www.kaggle.com/datasets/jessemostipak/volcano-eruptions"), " and show all recorded volcanoes."),
-    ui.layout_sidebar(
-        # UI
-        ui.panel_sidebar(
-            ui.h4("Use the buttons below to define how the data are plotted.", style = "margin-bottom:40px"),
-            ui.input_checkbox_group(
-                "toggle", "Show/Hide data", {"Earthquakes": "Earthquakes (blue)", "Volcanoes": "Volcanoes (red)"},
-                selected = ["Earthquakes", "Volcanoes"]
-            ),
-            ui.input_radio_buttons(
-                "eSizeCol", "Size attribute for earthquake (blue) data", {"Magnitude": "Magnitude", "Depth (km)": "Depth"}
-            ),
-            ui.input_radio_buttons(
-                "vSizeCol", "Size attribute for volcano (red) data", {"Population Within 100km": "Population", "Elevation (m)": "Elevation"}
-            ),
-        ),
+    ui.p("Earthquakes are plotted in blue; the data come from the USGS (downloaded from ", ui.a("here ", href = "https://www.kaggle.com/datasets/thedevastator/uncovering-geophysical-insights-analyzing-usgs-e"), ") and show all earthquakes from 2022.  Volcanoes are plotted in red; the data come from The Smithsonian Institute and (downloaded from ", ui.a("here", href = "https://www.kaggle.com/datasets/jessemostipak/volcano-eruptions"), ") and show all recorded volcanoes.", style = "max-width:1000px"),
+    ui.h4("Use the buttons below to define how the data are plotted."),
 
-        # plot
-        ui.panel_main(
-            ui.row(
-                output_widget("map")        
-            ),
-            ui.row(
-                ui.column(
-                    6, 
-                    ui.panel_conditional(
-                        "input.toggle.includes('Earthquakes')",
-                            ui.output_plot("ehist"),
-                    )
-                ),
-                ui.column(
-                    6,
-                    ui.panel_conditional(
-                        "input.toggle.includes('Volcanoes')",
-                            ui.output_plot("vhist"),
-                    )
+    # UI
+    ui.panel_well(
+        ui.row(
+            ui.column(3, 
+                ui.input_checkbox_group(
+                    "toggle", "Show/Hide data", {"Earthquakes": "Earthquakes (blue)", "Volcanoes": "Volcanoes (red)"},
+                    selected = ["Earthquakes", "Volcanoes"]
                 ),
             ),
-        )
-        
+            ui.column(4, 
+                ui.input_radio_buttons(
+                    "eSizeCol", "Size attribute for earthquake data", {"Magnitude": "Magnitude", "Depth (km)": "Depth"}
+                ),
+            ),
+            ui.column(4, 
+                ui.input_radio_buttons(
+                    "vSizeCol", "Size attribute for volcano data", {"Population Within 100km": "Population", "Elevation (m)": "Elevation"}
+                ),
+            )
+        ),
+        style = "margin-bottom:10px; max-width:1000px"
     ),
+
+    # plots
+    ui.row(
+        output_widget("map")        
+    ),
+    ui.row(
+        ui.column(
+            6, 
+            ui.panel_conditional(
+                "input.toggle.includes('Earthquakes')",
+                    ui.output_plot("ehist"),
+            )
+        ),
+        ui.column(
+            6,
+            ui.panel_conditional(
+                "input.toggle.includes('Volcanoes')",
+                    ui.output_plot("vhist"),
+            )
+        ),
+        style = "max-width:1000px",
+    ),
+
+        
+
 )
 
 
