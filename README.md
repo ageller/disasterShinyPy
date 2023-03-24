@@ -2,10 +2,11 @@
 
 A Python Shiny app showing earthquakes and volcanoes.  
 
-Earthquake data come from [here](https://www.kaggle.com/datasets/thedevastator/uncovering-geophysical-insights-analyzing-usgs-e), and volcano data come from [here](https://www.kaggle.com/datasets/jessemostipak/volcano-eruptions).
+Earthquake data come from the USGS and were downloaded [here](https://www.kaggle.com/datasets/thedevastator/uncovering-geophysical-insights-analyzing-usgs-e), and volcano data come The Simithsonian Institute and were downloaded from [here](https://www.kaggle.com/datasets/jessemostipak/volcano-eruptions).
 
 A live version of this app is available on [shinyapps.io here](https://ageller.shinyapps.io/disasterpy/).
 
+Please also see my companion [blog post]( https://sites.northwestern.edu/researchcomputing/2023/03/24/experimenting-with-shiny-for-python/) about creating this app.
 
 ## Running locally
 
