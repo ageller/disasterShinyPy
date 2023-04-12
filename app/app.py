@@ -43,7 +43,7 @@ app_ui = ui.page_fluid(
 
     # title
     ui.h1("Map of earthquakes and volcanoes"),
-    ui.p("Earthquakes are plotted in blue; the data come from the USGS (downloaded from ", ui.a("here ", href = "https://www.kaggle.com/datasets/thedevastator/uncovering-geophysical-insights-analyzing-usgs-e"), ") and show all earthquakes from 2022.  Volcanoes are plotted in red; the data come from The Smithsonian Institute (downloaded from ", ui.a("here", href = "https://www.kaggle.com/datasets/jessemostipak/volcano-eruptions"), ") and show all recorded volcanoes.", style = "max-width:1000px"),
+    ui.p("Earthquakes are plotted in blue; the data come from the USGS (downloaded from ", ui.a("here ", href = "https://www.kaggle.com/datasets/thedevastator/uncovering-geophysical-insights-analyzing-usgs-e"), ") and show all earthquakes from 2022.  Volcanoes are plotted in red; the data come from The Smithsonian Institute (downloaded from ", ui.a("here", href = "https://www.kaggle.com/datasets/jessemostipak/volcano-eruptions"), ") and show all recorded volcanoes.  In the map, marker sizes are scaled using the marker diameter.  When scaling by Magnitude, the sizes reflect 10^Magnitude; scaling by all other attributes is linear.", style = "max-width:1000px"),
     ui.h4("Use the buttons below to define how the data are plotted."),
 
     # UI

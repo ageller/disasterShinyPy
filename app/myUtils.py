@@ -12,15 +12,15 @@ def prepData():
     edf = pd.read_csv('data/usgs_main.csv')
     edf['time'] = pd.to_datetime(edf['time'])
     powmag = 10.**edf['mag']
-    edf['Magnitude'] = np.nan_to_num((powmag - np.amin(powmag))/(np.amax(powmag) - np.amin(powmag))*1e3,0)
-    edf['Depth (km)'] = np.nan_to_num(300.*(edf['depth'] - np.amin(edf['depth']))/(np.amax(edf['depth']) - np.amin(edf['depth'])),0)
+    edf['Magnitude'] = np.nan_to_num((powmag - np.amin(powmag))/(np.amax(powmag) - np.amin(powmag))*100,0)
+    edf['Depth (km)'] = np.nan_to_num((edf['depth'] - np.amin(edf['depth']))/(np.amax(edf['depth']) - np.amin(edf['depth']))*20.,0)
     # a map between the normalized and regular columns so that I can plot histograms
     edfColMap = {'Magnitude':'mag', 'Depth (km)':'depth'}
 
     # Volcanoes : https://www.kaggle.com/datasets/jessemostipak/volcano-eruptions
     vdf = pd.read_csv('data/volcano.csv')
-    vdf['Population Within 100km'] = np.nan_to_num((vdf['population_within_100_km'] - np.amin(vdf['population_within_100_km']))/(np.amax(vdf['population_within_100_km']) - np.amin(vdf['population_within_100_km']))*300., 0)
-    vdf['Elevation (m)'] = np.nan_to_num(((vdf['elevation'] - np.amin(vdf['elevation']))/(np.amax(vdf['elevation']) - np.amin(vdf['elevation'])))**3.*300., 0)
+    vdf['Population Within 100km'] = np.nan_to_num((vdf['population_within_100_km'] - np.amin(vdf['population_within_100_km']))/(np.amax(vdf['population_within_100_km']) - np.amin(vdf['population_within_100_km']))*50., 0)
+    vdf['Elevation (m)'] = np.nan_to_num(((vdf['elevation'] - np.amin(vdf['elevation']))/(np.amax(vdf['elevation']) - np.amin(vdf['elevation'])))*20., 0)
     # a map between the normalized and regular columns so that I can plot histograms
     vdfColMap = {'Population Within 100km':'population_within_100_km', 'Elevation (m)':'elevation'}
 
@@ -40,7 +40,7 @@ def createMap(edf, vdf, edfColMap, vdfColMap, eSizeCol = 'Magnitude', vSizeCol =
                 marker = go.scattermapbox.Marker(
                     size = edf[eSizeCol].to_numpy(),
                     sizemin = 1.5,
-                    sizemode = 'area',
+                    sizemode = 'diameter',
                     color = '#0d6aff',
                     opacity = 0.7
                 ),
@@ -54,7 +54,7 @@ def createMap(edf, vdf, edfColMap, vdfColMap, eSizeCol = 'Magnitude', vSizeCol =
                 marker = go.scattermapbox.Marker(
                     size = vdf[vSizeCol].to_numpy(),
                     sizemin = 1.5,
-                    sizemode = 'area',
+                    sizemode = 'diameter',
                     color = '#ff1d0d',
                     opacity = 0.7
                 ),
