@@ -42,7 +42,7 @@ def createMap(edf, vdf, edfColMap, vdfColMap, eSizeCol = 'Magnitude', vSizeCol =
                     sizemin = 1.5,
                     sizemode = 'diameter',
                     color = '#0d6aff',
-                    opacity = 0.7
+                    opacity = 0.5
                 ),
                 text = edf['place'] + '<br>' + eSizeCol +': ' + edf[edfColMap[eSizeCol]].astype('str')+ '<br>Date: ' + edf['time'].dt.strftime('%b %d, %Y'),
                 hoverinfo = 'text'
@@ -56,7 +56,7 @@ def createMap(edf, vdf, edfColMap, vdfColMap, eSizeCol = 'Magnitude', vSizeCol =
                     sizemin = 1.5,
                     sizemode = 'diameter',
                     color = '#ff1d0d',
-                    opacity = 0.7
+                    opacity = 0.5
                 ),
                 text = vdf['volcano_name'] + '<br>' + vSizeCol +': ' + vdf[vdfColMap[vSizeCol]].astype('str') + '<br>Last Eruption Year: ' + vdf['last_eruption_year'].astype('str'),
                 hoverinfo = 'text'
