@@ -6,7 +6,7 @@ Earthquake data come from the USGS and were downloaded [here](https://www.kaggle
 
 A live version of this app is available on [shinyapps.io here](https://ageller.shinyapps.io/disasterpy/).
 
-Please also see my companion [blog post]( https://sites.northwestern.edu/researchcomputing/2023/03/24/experimenting-with-shiny-for-python/) about creating this app.
+Please also see my companion [blog post](https://sites.northwestern.edu/researchcomputing/2023/04/12/experimenting-with-shiny-for-python/) about creating this app.
 
 ## Running locally
 
